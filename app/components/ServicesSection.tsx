@@ -59,10 +59,10 @@ const itemVariants = {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-32 bg-offWhite">
+    <section id="services" className="py-20 md:py-32 bg-nearBlack">
       <div className="container mx-auto px-6 max-w-5xl">
         <motion.h2 
-          className="text-4xl md:text-5xl font-display text-slateBlue text-center mb-16 md:mb-20"
+          className="text-4xl md:text-5xl font-display text-offWhite text-center mb-16 md:mb-20"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -80,14 +80,14 @@ export default function ServicesSection() {
           {services.map((service) => (
             <motion.div 
               key={service.title} 
-              className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-subtle hover:shadow-md transition-shadow duration-300"
+              className="flex flex-col items-center text-center p-6 bg-slateBlue rounded-lg shadow-subtle hover:shadow-md transition-shadow duration-300"
               variants={itemVariants}
             >
-              <div className="mb-5 p-3 bg-mutedMauve/10 rounded-full">
+              <div className="mb-5 p-3 bg-nearBlack/50 rounded-full">
                 <Image src={service.icon} alt={`${service.title} icon`} width={48} height={48} />
               </div>
-              <h3 className="text-xl font-display text-slateBlue mb-2">{service.title}</h3>
-              <p className="text-nearBlack font-sans text-sm leading-relaxed">{service.description}</p>
+              <h3 className="text-xl font-display text-offWhite mb-2">{service.title}</h3>
+              <p className="text-offWhite/80 font-sans text-sm leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </motion.div>

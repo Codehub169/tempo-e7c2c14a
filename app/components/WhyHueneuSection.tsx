@@ -16,7 +16,7 @@ const textVariants = {
 
 export default function WhyHueneuSection() {
   return (
-    <section id="why-hueneu" className="py-20 md:py-32 bg-slateBlue text-neutral-offWhite">
+    <section id="why-hueneu" className="py-20 md:py-32 bg-slateBlue text-offWhite">
       <div className="container mx-auto px-6 max-w-3xl text-center">
         <motion.h2 
           className="text-4xl md:text-5xl font-display mb-12 md:mb-16"
@@ -46,7 +46,7 @@ export default function WhyHueneuSection() {
             className="text-xl md:text-2xl font-sans leading-relaxed mb-6 md:mb-8"
             variants={textVariants}
           >
-            Our designs speak quietly, but they resonate deeply. They aim for that perfect balance of <span className="text-mutedMauve/80">calm and intrigue</span>, mystery and clarity, creating experiences that stay with you long after you’ve scrolled away.
+            Our designs speak quietly, but they resonate deeply. They aim for that perfect balance of <span className="text-offWhite/70">calm and intrigue</span>, mystery and clarity, creating experiences that stay with you long after you’ve scrolled away.
           </motion.p>
 
           <motion.p 

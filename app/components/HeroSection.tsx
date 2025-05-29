@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <section 
       id="hero"
-      className="min-h-screen flex flex-col justify-center items-center relative text-center p-8 bg-neutral-offWhite overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center relative text-center p-8 bg-nearBlack overflow-hidden"
     >
       {/* Subtle background pattern or gradient - future enhancement */}
       {/* <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-slateBlue to-mutedMauve"></div> */}
@@ -34,7 +34,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.8 }}
-        className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-slateBlue mb-4"
+        className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-offWhite mb-4"
       >
         Where stories find their aesthetic.
       </motion.h1>
@@ -61,7 +61,7 @@ const HeroSection = () => {
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            <ChevronDown className="w-8 h-8 text-slateBlue hover:text-softCoral transition-colors" />
+            <ChevronDown className="w-8 h-8 text-mutedMauve hover:text-softCoral transition-colors duration-300" />
           </motion.div>
         </a>
       </motion.div>

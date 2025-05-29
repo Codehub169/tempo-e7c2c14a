@@ -6,7 +6,7 @@ import ContactFormSection from './components/ContactFormSection';
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col bg-offWhite">
+    <main className="flex flex-col bg-nearBlack">
       <HeroSection />
       <StorySection />
       <ServicesSection />
