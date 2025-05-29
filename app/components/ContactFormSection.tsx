@@ -17,14 +17,26 @@ export default function ContactFormSection() {
     setStatus('loading');
     setFeedbackMessage('');
 
-    if (!name || !email || !message) {
+    if (!name.trim() || !email.trim() || !message.trim()) {
       setStatus('error');
       setFeedbackMessage('Please fill in all fields.');
       return;
     }
 
+    // Basic email validation
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      setStatus('error');
+      setFeedbackMessage('Please enter a valid email address.');
+      return;
+    }
+
     try {
-      const response = await axios.post('/api/contact', { name, email, message });
+      const response = await axios.post('/api/contact', { 
+        name: name.trim(), 
+        email: email.trim(), 
+        message: message.trim() 
+      });
       if (response.status === 200) {
         setStatus('success');
         setFeedbackMessage('Your message has been sent! We\'ll be in touch soon.');
@@ -33,7 +45,7 @@ export default function ContactFormSection() {
         setMessage('');
       } else {
         setStatus('error');
-        setFeedbackMessage(response.data.message || 'Something went wrong. Please try again.');
+        setFeedbackMessage(response.data?.message || 'Something went wrong. Please try again.');
       }
     } catch (error: any) {
       setStatus('error');
@@ -42,7 +54,7 @@ export default function ContactFormSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-neutral-offWhite">
+    <section id="contact" className="py-20 md:py-32 bg-offWhite">
       <div className="container mx-auto px-6 max-w-2xl">
         <motion.h2 
           className="text-4xl md:text-5xl font-display text-slateBlue text-center mb-12 md:mb-16"
@@ -61,7 +73,7 @@ export default function ContactFormSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="font-sans text-neutral-nearBlack text-center mb-8">
+          <p className="font-sans text-nearBlack text-center mb-8">
             Have a story waiting to be told? Or perhaps a question? 
             Drop us a line, we’d love to hear from you.
           </p>
@@ -76,7 +88,8 @@ export default function ContactFormSection() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="w-full px-4 py-3 font-sans border border-mutedMauve/50 rounded-md focus:ring-2 focus:ring-softCoral focus:border-softCoral outline-none transition-colors duration-200 bg-neutral-offWhite/50 placeholder-mutedMauve"
+                aria-required="true"
+                className="w-full px-4 py-3 font-sans border border-mutedMauve/50 rounded-md focus:ring-2 focus:ring-softCoral focus:border-softCoral outline-none transition-colors duration-200 bg-offWhite/50 placeholder-mutedMauve"
               />
             </div>
             <div>
@@ -89,7 +102,8 @@ export default function ContactFormSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 font-sans border border-mutedMauve/50 rounded-md focus:ring-2 focus:ring-softCoral focus:border-softCoral outline-none transition-colors duration-200 bg-neutral-offWhite/50 placeholder-mutedMauve"
+                aria-required="true"
+                className="w-full px-4 py-3 font-sans border border-mutedMauve/50 rounded-md focus:ring-2 focus:ring-softCoral focus:border-softCoral outline-none transition-colors duration-200 bg-offWhite/50 placeholder-mutedMauve"
               />
             </div>
             <div>
@@ -102,14 +116,18 @@ export default function ContactFormSection() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="w-full px-4 py-3 font-sans border border-mutedMauve/50 rounded-md focus:ring-2 focus:ring-softCoral focus:border-softCoral outline-none transition-colors duration-200 bg-neutral-offWhite/50 placeholder-mutedMauve"
+                aria-required="true"
+                className="w-full px-4 py-3 font-sans border border-mutedMauve/50 rounded-md focus:ring-2 focus:ring-softCoral focus:border-softCoral outline-none transition-colors duration-200 bg-offWhite/50 placeholder-mutedMauve"
               ></textarea>
             </div>
             
             {feedbackMessage && (
-              <div className={`flex items-center p-3 rounded-md text-sm ${status === 'success' ? 'bg-successGreen/10 text-successGreen' : 'bg-errorRed/10 text-errorRed'}`}>
-                {status === 'success' ? <CheckCircle2 size={20} className="mr-2" /> : <AlertTriangle size={20} className="mr-2" />}
-                {feedbackMessage}
+              <div 
+                role="alert"
+                aria-live="assertive"
+                className={`flex items-center p-3 rounded-md text-sm ${status === 'success' ? 'bg-successGreen/10 text-successGreen' : 'bg-errorRed/10 text-errorRed'}`}>
+                {status === 'success' ? <CheckCircle2 size={20} className="mr-2 flex-shrink-0" /> : <AlertTriangle size={20} className="mr-2 flex-shrink-0" />}
+                <span>{feedbackMessage}</span>
               </div>
             )}
 
@@ -142,7 +160,7 @@ export default function ContactFormSection() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <p className="font-sans text-neutral-nearBlack mb-2">Find us on Instagram:</p>
+          <p className="font-sans text-nearBlack mb-2">Find us on Instagram:</p>
           <a 
             href="https://instagram.com/hueneu_" 
             target="_blank" 

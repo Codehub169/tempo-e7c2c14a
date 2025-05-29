@@ -59,7 +59,7 @@ const itemVariants = {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-32 bg-neutral-offWhite">
+    <section id="services" className="py-20 md:py-32 bg-offWhite">
       <div className="container mx-auto px-6 max-w-5xl">
         <motion.h2 
           className="text-4xl md:text-5xl font-display text-slateBlue text-center mb-16 md:mb-20"
@@ -87,7 +87,7 @@ export default function ServicesSection() {
                 <Image src={service.icon} alt={`${service.title} icon`} width={48} height={48} />
               </div>
               <h3 className="text-xl font-display text-slateBlue mb-2">{service.title}</h3>
-              <p className="text-neutral-nearBlack font-sans text-sm leading-relaxed">{service.description}</p>
+              <p className="text-nearBlack font-sans text-sm leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </motion.div>
