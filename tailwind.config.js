@@ -19,8 +19,8 @@ module.exports = {
         errorRed: '#E56B6F',        // Error
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],    // Primary font (default sans)
-        display: ['Poppins', 'sans-serif'], // Secondary font (for headings/special text)
+        sans: ['var(--font-inter)', 'sans-serif'],    // Primary font (default sans)
+        display: ['var(--font-poppins)', 'sans-serif'], // Secondary font (for headings/special text)
       },
       borderRadius: {
         'soft': '8px', // Example for soft corners
